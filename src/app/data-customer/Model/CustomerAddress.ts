@@ -1,0 +1,19 @@
+export interface CustomerAddress{
+    customerID:number
+    title:string
+    firstName:string
+    middleName:string
+    lastName:string
+    suffix:string
+    companyName:string
+    salesPerson:string
+    emailAddress:string
+    phone:string
+    addressID:number
+    addressLine1:string
+    addressLine2:string
+    city:string
+    stateProvince:string
+    countryRegion:string
+    postalCode:string
+}

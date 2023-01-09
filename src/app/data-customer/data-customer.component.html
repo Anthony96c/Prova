@@ -1,0 +1,139 @@
+<div><br><br><br><br>
+  <div>
+    <div class="container">
+      <div class="mb-3">
+        <span>
+          <h5>Completa uno dei due campi per effettuare la ricerca del customer:</h5><br>
+        </span>
+        <label for="exampleInputEmail1" class="form-label">ID:</label>
+        <input [(ngModel)]="SceltaCustomerID" type="number" class="form-control" id="exampleInputEmail1"
+          aria-describedby="emailHelp">
+      </div>
+      <div class="mb-3">
+        <label for="exampleInputPassword1" class="form-label">Cognome:</label>
+        <input type="text" class="form-control" id="exampleInputPassword1">
+      </div>
+      <button type="submit" class="btn btn-primary" (click)="GetCustomerID()">Avvia ricerca</button>
+      <div><br></div>
+
+      <div *ngIf="DataCustomer.customerId != 0">
+        <table class="table">
+          <thead>
+            <tr>
+              <th scope="col">#ID</th>
+              <th scope="col">NameStyle</th>
+              <th scope="col">Title</th>
+              <th scope="col">FirstName</th>
+              <th scope="col">MiddleName</th>
+              <th scope="col">LastName</th>
+              <th scope="col">CompanyName</th>
+              <th scope="col">SalesPerson</th>
+              <th scope="col">EmailAddress</th>
+              <th scope="col">Phone</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <th scope="row"> {{DataCustomer.customerId}}</th>
+              <td>{{DataCustomer.nameStyle}}</td>
+              <td>{{DataCustomer.title}}</td>
+              <td>{{DataCustomer.firstName}}</td>
+              <td>{{DataCustomer.middleName}}</td>
+              <td>{{DataCustomer.lastName}}</td>
+              <td>{{DataCustomer.companyName}}</td>
+              <td>{{DataCustomer.salesPerson}}</td>
+              <td>{{DataCustomer.emailAddress}}</td>
+              <td>{{DataCustomer.phone}}</td>
+            </tr>
+          </tbody>
+        </table>
+        <p>
+          <button type="submit" class="btn btn-primary" (click)="SeeCustomerAddress()" data-bs-toggle="collapse"
+            href="#collapseAddress" role="button" aria-expanded="false" aria-controls="collapseExample">
+            Vedi Indirizzo Completo</button>
+          <button type="submit" class="btn btn-primary" (click)="SeeCustomerOrder()" data-bs-toggle="collapse"
+            style='margin-left:2% !important' href="#collapseOrder" role="button" aria-expanded="false"
+            aria-controls="collapseExample">
+            Vedi Ordini<br></button>
+        </p>
+
+        <div class="collapse" id="collapseAddress">
+          <div *ngIf="checkSeeCA">
+            <div class="card card-body">
+              <div *ngIf="AddressCustomer.customerID > 0">
+                <table class="table">
+                  <thead>
+                    <tr>
+                      <th scope="col">#</th>
+                      <th scope="col">AddressLine1</th>
+                      <th scope="col">Floor/Room</th>
+                      <th scope="col">City</th>
+                      <th scope="col">StateProvince</th>
+                      <th scope="col">CountryRegion</th>
+                      <th scope="col">postalCode</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <th scope="row"> <i class="bi bi-arrow-right-circle"></i></th>
+                      <td>{{AddressCustomer.addressLine1}}</td>
+                      <td>{{AddressCustomer.addressLine2}}</td>
+                      <td>{{AddressCustomer.city}}</td>
+                      <td>{{AddressCustomer.stateProvince}}</td>
+                      <td>{{AddressCustomer.countryRegion}}</td>
+                      <td>{{AddressCustomer.postalCode}}</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+            <!-- <ng-template #NoAddress>
+        <p>Non è presente l'indirizzo.</p>
+      </ng-template> -->
+          </div>
+        </div>
+      </div>
+
+      <div class="collapse" id="collapseOrder">
+        <div *ngIf="checkSeeCO">
+          <div class="card card-body" style='margin-top: 2% !important'>
+            <div *ngIf="OrderCustomer[0].salesOrderID > 0">
+              <table class="table" >
+                <thead>
+                  <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">salesOrderID</th>
+                    <th scope="col">salesOrderDetailID</th>
+                    <th scope="col">productID</th>
+                    <th scope="col">name</th>
+                    <th scope="col">listPrice</th>
+                    <th scope="col">purchaseOrderNumber</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr *ngFor="let Print of OrderCustomer">
+                    <th scope="row"> <i class="bi bi-arrow-right-circle"></i></th>
+                    <td>{{Print.salesOrderID}}</td>
+                    <td>{{Print.salesOrderDetailID}}</td>
+                    <td>{{Print.productID}}</td>
+                    <td>{{Print.name}}</td>
+                    <td>{{Print.listPrice}}</td>
+                    <td>{{Print.purchaseOrderNumber}}</td>
+                  </tr>
+                </tbody>
+              </table>
+
+            </div>
+          </div>
+          <!-- <ng-template #NoAddress>
+      <p>Non è presente l'indirizzo.</p>
+    </ng-template> -->
+        </div>
+      </div>
+    </div>
+
+
+  </div>
+</div>
+
+
